@@ -1,7 +1,7 @@
 {
   "name": "Sam the Eagle",
-  "short_name": "STE",
-  "theme_color": "#000000",
+  "short_name": "Sam",
+  "theme_color": "#1976d2",
   "background_color": "#000000",
   "display": "standalone",
   "scope": "./",

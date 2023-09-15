@@ -4,14 +4,17 @@
 
 html,body {
   background-color: wheat;
-  width: 800px;
-  height: 1280px;
+  width: 760px;
+  height: 1240px;
   background-image: url("assets/img/background_small.jpg");
   background-size: cover;
   overflow: hidden;
   padding: 10px;
 }
 
+* {
+  box-sizing: border-box;
+}
 body {
 }
 
@@ -66,10 +69,9 @@ body {
 }
 
 .sam-block {
-  outline:1px solid black;
+  outline:4px solid black;
   display: block;
   border-radius:10px;
-  padding: 10px;
   display: block;
   justify-self: stretch;
   align-self: stretch;
@@ -86,4 +88,9 @@ body {
     margin-bottom: 20px;
   }
 
+}
+
+.no-border {
+  outline: none !important;
+  border-radius: 0 !important;
 }
