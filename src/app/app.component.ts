@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     setInterval(() => {
-      console.log("status out!");
       const payload:string=JSON.stringify({
         uptime: this.uptime.toUTCString()
       });

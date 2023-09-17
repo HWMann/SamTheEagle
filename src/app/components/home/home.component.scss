@@ -1,0 +1,10 @@
+.sam-color-palette {
+  display: grid;
+  grid-template-columns: repeat(17,1fr);
+  div {
+    display: block;
+    width: 100%;
+    background-color: red;
+    aspect-ratio: 1;
+  }
+}

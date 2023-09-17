@@ -9,6 +9,9 @@ import { WeatherComponent } from './components/weather/weather.component';
 import {environment} from "../assets/environments/environment";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AdvertComponent } from './components/advert/advert.component';
+import { ColorMixerComponent } from './components/color-mixer/color-mixer.component';
+import { HomeComponent } from './components/home/home.component';
+import { ColorSwatchComponent } from './components/color-swatch/color-swatch.component';
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: 'kermit',
@@ -22,7 +25,10 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   declarations: [
     AppComponent,
     WeatherComponent,
-    AdvertComponent
+    AdvertComponent,
+    ColorMixerComponent,
+    HomeComponent,
+    ColorSwatchComponent
   ],
   imports: [
     BrowserModule,
