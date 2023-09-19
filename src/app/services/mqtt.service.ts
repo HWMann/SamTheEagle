@@ -24,7 +24,9 @@ export class Mqtt implements OnInit {
 
   publish(topic:string, payload:any):void
   {
-    console.log(topic,payload);
+    if(typeof(payload)!=='string') {
+      payload=JSON.stringify(payload);
+    }
     this.mqttService.unsafePublish(topic,payload)
   }
   public parse(message:any):any {

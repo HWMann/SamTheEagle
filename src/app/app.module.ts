@@ -3,15 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import {MqttModule, IMqttServiceOptions} from 'ngx-mqtt';
 
+import {environment} from "../assets/environments/environment";
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WeatherComponent } from './components/weather/weather.component';
-import {environment} from "../assets/environments/environment";
+
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AdvertComponent } from './components/advert/advert.component';
-import { ColorMixerComponent } from './components/color-mixer/color-mixer.component';
 import { HomeComponent } from './components/home/home.component';
-import { ColorSwatchComponent } from './components/color-swatch/color-swatch.component';
+import {CommonModule} from "@angular/common";
+import { SettingsComponent } from './components/settings/settings.component';
+import { SamComponent } from './components/sam/sam.component';
+import { TileComponent } from './components/tile/tile.component';
+import { ColorsComponent } from './components/colors/colors.component';
+import { AssignsComponent } from './components/assigns/assigns.component';
+import { CalibrateComponent } from './components/calibrate/calibrate.component';
+import { PaletteComponent } from './components/palette/palette.component';
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: 'kermit',
@@ -26,12 +34,18 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     AppComponent,
     WeatherComponent,
     AdvertComponent,
-    ColorMixerComponent,
     HomeComponent,
-    ColorSwatchComponent
+    SettingsComponent,
+    SamComponent,
+    TileComponent,
+    ColorsComponent,
+    AssignsComponent,
+    CalibrateComponent,
+    PaletteComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
     ServiceWorkerModule.register('ngsw-worker.js', {
@@ -42,6 +56,10 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    BrowserModule,
+    CommonModule
+  ]
 })
 export class AppModule { }
