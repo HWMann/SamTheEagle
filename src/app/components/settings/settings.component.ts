@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Mqtt} from "../../services/mqtt.service";
 
 @Component({
   selector: 'app-settings',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class SettingsComponent {
 
+  constructor(
+    private mqtt:Mqtt
+  ) {
+  }
+  ngAfterViewInit() {
+    this.mqtt.publish("Bunsen/setting/mode",0);
+  }
+  
 }

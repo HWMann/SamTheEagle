@@ -1,1 +1,5 @@
-<p>palette works!</p>
+<div class="sam-palette" style="grid-template-columns: repeat({{ cols }},1fr)">
+  <div class="sam-color-swatch" *ngFor="let rgb of palette">
+    <button [ngClass]="{'selected': rgb === selectedColor}" (click)="selectColor(rgb)" style="{{ rgb.getCSS() }}"></button>
+  </div>
+</div>

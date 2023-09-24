@@ -15,6 +15,10 @@ export class RgbModel {
     return `background-color: rgb(${this.r},${this.g},${this.b})`;
   }
 
+  public getFill(): string {
+    return "rgb("+this.r+","+this.g+","+this.b+")";
+  }
+
   public incR(step:number):void {
     this.r=this.limit(this.r+step);
   }

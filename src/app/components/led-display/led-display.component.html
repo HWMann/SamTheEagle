@@ -1,0 +1,23 @@
+<h1>Zuweisungen</h1>
+<div class="sam-led-settings-list">
+  <div class="sam-led-settings-list-panel-row">
+    <div>
+      <app-led *ngIf="assigns.LR" [assign]="assigns['LR']"></app-led>
+    </div>
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+  </div>
+
+</div>
+<app-led-settings *ngIf="selectedAssign" [assign]="selectedAssign" (closeEvent)="closeSettings()"></app-led-settings>
+

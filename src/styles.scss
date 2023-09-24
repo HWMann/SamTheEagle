@@ -63,7 +63,7 @@ body {
   display:grid;
   grid-template-columns: repeat(4,1fr);
   grid-template-rows: repeat(12,1fr);
-  gap: 10px;
+  gap: 20px;
   height: 100%;
   width: 100%;
 }
@@ -93,4 +93,13 @@ body {
 .no-border {
   outline: none !important;
   border-radius: 0 !important;
+}
+
+button {
+  width: 100%;
+  border:3px double black;
+  background-color: white;
+  font-family: 'Limelight', cursive;
+  font-size: 32px;
+  border-radius: 20px;
 }

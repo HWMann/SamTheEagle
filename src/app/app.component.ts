@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Mqtt} from "./services/mqtt.service";
 import {environment} from "../assets/environments/environment";
+import {GlobalService} from "./services/global.service";
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private mqtt:Mqtt,
+    private globalService:GlobalService
   ) {
   }
 
@@ -23,6 +25,8 @@ export class AppComponent implements OnInit {
       });
       this.mqtt.publish(environment.clientName+"/status",payload);
     },10000)
+    this.globalService.load();
+
   }
 
 }

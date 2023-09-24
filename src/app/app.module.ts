@@ -1,25 +1,30 @@
-import { NgModule, isDevMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
+import {NgModule, isDevMode} from '@angular/core';
+import {CommonModule} from "@angular/common";
+import {BrowserModule} from '@angular/platform-browser';
 import {MqttModule, IMqttServiceOptions} from 'ngx-mqtt';
 
 import {environment} from "../assets/environments/environment";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { WeatherComponent } from './components/weather/weather.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {WeatherComponent} from './components/weather/weather.component';
 
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { AdvertComponent } from './components/advert/advert.component';
-import { HomeComponent } from './components/home/home.component';
-import {CommonModule} from "@angular/common";
-import { SettingsComponent } from './components/settings/settings.component';
-import { SamComponent } from './components/sam/sam.component';
-import { TileComponent } from './components/tile/tile.component';
-import { ColorsComponent } from './components/colors/colors.component';
-import { AssignsComponent } from './components/assigns/assigns.component';
-import { CalibrateComponent } from './components/calibrate/calibrate.component';
-import { PaletteComponent } from './components/palette/palette.component';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {AdvertComponent} from './components/advert/advert.component';
+import {HomeComponent} from './components/home/home.component';
+
+import {SettingsComponent} from './components/settings/settings.component';
+import {SamComponent} from './components/sam/sam.component';
+import {TileComponent} from './components/tile/tile.component';
+import {ColorsComponent} from './components/colors/colors.component';
+import {AssignsComponent} from './components/assigns/assigns.component';
+import {CalibrateComponent} from './components/calibrate/calibrate.component';
+import {PaletteComponent} from './components/palette/palette.component';
+import {RgbMixerComponent} from './components/rgb-mixer/rgb-mixer.component';
+import {LedSettingsComponent} from './components/led-settings/led-settings.component';
+import {LedDisplayComponent} from './components/led-display/led-display.component';
+import { DumpPipe } from './pipes/dump.pipe';
+import { LedComponent } from './components/led/led.component';
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: 'kermit',
@@ -42,6 +47,11 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     AssignsComponent,
     CalibrateComponent,
     PaletteComponent,
+    RgbMixerComponent,
+    LedSettingsComponent,
+    LedDisplayComponent,
+    DumpPipe,
+    LedComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,4 +72,5 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     CommonModule
   ]
 })
-export class AppModule { }
+export class AppModule {
+}

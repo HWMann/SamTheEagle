@@ -1,0 +1,26 @@
+.sam-led-settings-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.sam-led-settings-list-panel-row {
+
+}
+
+.sam-led-setting-display {
+  background-color: white;
+  border:4px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+  h1 {
+    margin:0;
+  }
+  p {
+    margin:0;
+  }
+  span {
+
+  }
+}

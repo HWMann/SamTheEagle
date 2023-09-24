@@ -1,0 +1,16 @@
+<ng-container *ngIf="assign">
+  <h1>{{ assign.t }}</h1>
+  <div>
+    <h2>Farbe:</h2>
+    <app-palette [selectedColor]="palette[assign.c]"></app-palette>
+    <h2>Regenbogen</h2>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <button (click)="setRainbow(1)">ein</button>
+      <button (click)="setRainbow(0)">aus</button>
+    </div>
+  </div>
+  <div>
+    <button (click)="close()">abbrechen</button>
+  </div>
+</ng-container>
+
