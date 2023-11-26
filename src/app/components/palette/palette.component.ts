@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {RgbModel} from "../../Models/rgb.model";
 import {Subscription} from "rxjs";
 import {Mqtt} from "../../services/mqtt.service";
@@ -13,6 +13,7 @@ import {ColorSelectObserver} from "../../observer/color-select.observer";
 export class PaletteComponent implements OnInit, OnDestroy {
   @Input() selectedColor: RgbModel | null = null
   @Input() cols:number = 16
+  @Output() colorSelect:EventEmitter<any> = new EventEmitter<any>()
 
   private subs: Subscription[] = []
   public palette: RgbModel[] = []
@@ -25,7 +26,6 @@ export class PaletteComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.mqtt.publish("Bunsen/setting/palette", null)
     this.subs = [
       this.globalService.palette().subscribe((data: any) => {
         this.palette = data
@@ -39,7 +39,7 @@ export class PaletteComponent implements OnInit, OnDestroy {
 
   public selectColor(color: RgbModel): void {
     this.selectedColor = color
-    this.colorSelectObserver.select(color)
+    this.colorSelect.emit(color.n);
   }
 
 }

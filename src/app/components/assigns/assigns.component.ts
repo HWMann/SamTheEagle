@@ -21,12 +21,11 @@ export class AssignsComponent implements OnInit, OnDestroy {
     private globalService: GlobalService,
     private colorSelectObserver: ColorSelectObserver,
     private mqtt:Mqtt
-  ) {
-  }
+  ) {}
 
   public selectLED($event: any): void {
     if(this.selectedColor!==null) {
-      this.mqtt.publish("Bunsen/setting/assign",{
+      this.mqtt.publish("cmnd/Bunsen6/assign",{
         "n": $event.n,
         "c": this.selectedColor?.n
       })
@@ -34,7 +33,11 @@ export class AssignsComponent implements OnInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.mqtt.publish("Bunsen/setting/mode",2);
+    this.mqtt.publish("cmnd/Bunsen6/mode",2);
+    this.mqtt.publish("cmnd/Bunsen6/shelf",1);
+    this.mqtt.publish("cmnd/Bunsen6/thermometer",1);
+    this.mqtt.publish("cmnd/Bunsen6/testTubes",1);
+
   }
 
   ngOnInit(): void {

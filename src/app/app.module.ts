@@ -1,13 +1,15 @@
-import {NgModule, isDevMode} from '@angular/core';
+import {NgModule, isDevMode, APP_INITIALIZER} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {BrowserModule} from '@angular/platform-browser';
 import {MqttModule, IMqttServiceOptions} from 'ngx-mqtt';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import {environment} from "../assets/environments/environment";
-
+import {Icons} from "./icons";
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {WeatherComponent} from './components/weather/weather.component';
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {AdvertComponent} from './components/advert/advert.component';
@@ -25,6 +27,10 @@ import {LedSettingsComponent} from './components/led-settings/led-settings.compo
 import {LedDisplayComponent} from './components/led-display/led-display.component';
 import { DumpPipe } from './pipes/dump.pipe';
 import { LedComponent } from './components/led/led.component';
+import { SliderComponent } from './components/slider/slider.component';
+import { SwitchPanelComponent } from './components/switch-panel/switch-panel.component';
+import { EffekteComponent } from './components/effekte/effekte.component';
+import {ConfigService} from "./services/config.service";
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: 'kermit',
@@ -52,11 +58,16 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     LedDisplayComponent,
     DumpPipe,
     LedComponent,
+    SliderComponent,
+    SwitchPanelComponent,
+    EffekteComponent
   ],
   imports: [
     BrowserModule,
+    FontAwesomeModule,
     CommonModule,
     AppRoutingModule,
+    HttpClientModule,
     MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
@@ -65,12 +76,26 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
       registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
-  providers: [],
+  providers: [
+    Icons,
+    {
+      provide: APP_INITIALIZER,
+      multi: true,
+      deps: [ConfigService],
+      useFactory: (configService: ConfigService) => {
+        return () => {
+          return configService.loadAppConfig();
+        };
+      }
+    }
+  ],
   bootstrap: [AppComponent],
   exports: [
     BrowserModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule,
   ]
 })
 export class AppModule {
+
 }

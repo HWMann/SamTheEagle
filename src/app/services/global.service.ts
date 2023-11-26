@@ -13,7 +13,7 @@ export class GlobalService {
   private paletteSubject: ReplaySubject<any> = new ReplaySubject<any>()
   private paletteData: RgbModel[] = []
 
-  private assignsSubject: ReplaySubject<any> = new ReplaySubject<any>()
+  private assignSubject: ReplaySubject<any> = new ReplaySubject<any>()
   private assignData: any = {}
 
   constructor(
@@ -22,18 +22,30 @@ export class GlobalService {
   }
 
   public load(): void {
-    this.mqtt.subscribe("Bunsen/palette/#").subscribe((message: any) => {
+    this.mqtt.subscribe("stat/Bunsen6/palette/#").subscribe((message: any) => {
       const data = this.mqtt.parse(message)
-      this.paletteData[data.n] = new RgbModel(data.n, data.r, data.g, data.b)
+      if(!this.paletteData[data.n])
+      {
+        this.paletteData[data.n] = new RgbModel(data.n, data.r, data.g, data.b)
+      }
       this.paletteSubject.next(this.paletteData)
     })
-    this.mqtt.subscribe("Bunsen/assigned/#").subscribe((message: any) => {
+    this.mqtt.subscribe("stat/Bunsen6/assigned/#").subscribe((message: any) => {
       const data = this.mqtt.parse(message)
       let found:boolean = false
-      this.assignData[data.s]=new AssignModel(data.n, data.s, data.t, data.c, data.m, data.b, data.h)
-      this.assignsSubject.next(this.assignData)
+
+      for(let a in this.assignData) {
+        if(a===data.s) {
+          found=true
+        }
+      }
+
+      if(!found) {
+        this.assignData[data.s]=new AssignModel(data.n, data.s, data.t, data.c, data.m, data.b, data.o)
+      }
+      this.assignSubject.next(this.assignData)
     })
-    this.mqtt.publish("Bunsen/setting/palette", null);
+    this.mqtt.publish("cmnd/Bunsen6/sendPalette", null);
   }
 
   public palette() {
@@ -41,7 +53,8 @@ export class GlobalService {
   }
 
   public assigns() {
-    return this.assignsSubject.asObservable();
+    console.log("replay")
+    return this.assignSubject.asObservable();
   }
 
 }

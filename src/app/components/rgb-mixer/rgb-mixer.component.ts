@@ -18,21 +18,21 @@ export class RgbMixerComponent {
   public setColorR(step:number):void {
     if(this.color) {
       this.color.r=step
-      this.mqtt.publish("Bunsen/setting/rgb",this.color)
+      this.mqtt.publish("cmnd/Bunsen6/rgb",this.color)
     }
   }
 
   public setColorG(step:number):void {
     if(this.color) {
       this.color.g=step
-      this.mqtt.publish("Bunsen/setting/rgb",this.color)
+      this.mqtt.publish("cmnd/Bunsen6/rgb",this.color)
     }
   }
 
   public setColorB(step:number):void {
     if(this.color) {
       this.color.b=step
-      this.mqtt.publish("Bunsen/setting/rgb",this.color)
+      this.mqtt.publish("cmnd/Bunsen6/rgb",this.color)
     }
   }
 }

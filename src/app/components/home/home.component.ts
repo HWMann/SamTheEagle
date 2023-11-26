@@ -15,7 +15,7 @@ export class HomeComponent {
   }
 
   ngAfterViewInit() {
-    this.mqtt.publish("Bunsen/setting/mode",0);
+    this.mqtt.publish("cmnd/Bunsen6/mode",0);
   }
 
 }

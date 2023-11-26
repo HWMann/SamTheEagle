@@ -14,6 +14,7 @@ export class LedSettingsComponent implements OnInit {
   @Input() assign:AssignModel|null = null
   public palette:RgbModel[] = []
   @Output() closeEvent:EventEmitter<any>=new EventEmitter<any>()
+  @Output() changeEvent:EventEmitter<any>=new EventEmitter<any>()
 
   constructor(
     private globalService:GlobalService,
@@ -25,23 +26,45 @@ export class LedSettingsComponent implements OnInit {
     this.globalService.palette().subscribe((data:RgbModel[]) => {
       this.palette=data
     })
-    this.colorSelectObserver.getMessage().subscribe((color:RgbModel) => {
-      if(this.assign) {
-        this.assign.c=color.n
-        this.mqtt.publish("Bunsen/setting/assign",{
-          "n": this.assign.n,
-          "c": this.assign.c
-        })
-      }
-    })
   }
 
-  public setRainbow(stat:number) {
+  public colorSelect($event:any):void {
+    console.log("assigning",$event);
     if(this.assign!==null) {
-      this.assign.m=stat*3;
-      this.mqtt.publish("Bunsen/setting/ledMode",{
+      this.assign.c=$event
+      this.mqtt.publish("cmnd/Bunsen6/assignColor",{
+        "n": this.assign.n,
+        "c": this.assign.c
+      })
+    }
+  }
+
+  public setMode(stat:number):void {
+    if(this.assign!==null) {
+      this.assign.m=stat
+      this.mqtt.publish("cmnd/Bunsen6/ledMode",{
         "n": this.assign.n,
         "m": this.assign.m
+      })
+    }
+  }
+
+  public setBrightness(value:number):void {
+    if(this.assign!==null) {
+      this.assign.b=value
+      this.mqtt.publish("cmnd/Bunsen6/ledBrightness",{
+        "n": this.assign.n,
+        "b": this.assign.b
+      })
+    }
+  }
+
+  public setHueOffset($event:any):void {
+    if(this.assign!==null) {
+      this.assign.o=$event
+      this.mqtt.publish("cmnd/Bunsen6/hue",{
+        "n": this.assign.n,
+        "o": this.assign.o
       })
     }
   }

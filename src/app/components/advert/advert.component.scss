@@ -1,14 +1,14 @@
 app-advert:host {
   display: block;
-  grid-column: 3 / 5;
+  grid-column: 2 / 2;
   grid-row: 1 / 12;
-
   img {
     width: 100%;
     display: block;
     margin: 0 0 10px 0;
-    padding: 20px;
+    padding: 10px;
     border: 3px solid black;
     border-radius: 20px;
   }
 }
+

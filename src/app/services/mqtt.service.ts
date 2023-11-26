@@ -22,7 +22,7 @@ export class Mqtt implements OnInit {
     return this.mqttService.observe(topic);
   }
 
-  publish(topic:string, payload:any):void
+  publish(topic:string, payload:any = null):void
   {
     if(typeof(payload)!=='string') {
       payload=JSON.stringify(payload);

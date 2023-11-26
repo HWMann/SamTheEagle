@@ -1,16 +1,10 @@
 <h1>Mische die Farbe</h1>
-<div style="display:grid; grid-template-columns: auto 1fr 1fr 1fr">
-  <div class="sam-color-preview" style="{{ color?.getCSS() }}">
-
-  </div>
-  <div class="sam-color-range" style="background-color: #f00">
-    <div class="sam-step-swatch" *ngFor="let step of steps" (click)="setColorR(step)" [ngClass]="{'active': step <= color.r }"></div>
-  </div>
-  <div class="sam-color-range" style="background-color: #0f0">
-    <div class="sam-step-swatch" *ngFor="let step of steps" (click)="setColorG(step)" [ngClass]="{'active': step <= color.g }"></div>
-  </div>
-  <div class="sam-color-range" style="background-color: #00f">
-    <div class="sam-step-swatch" *ngFor="let step of steps" (click)="setColorB(step)" [ngClass]="{'active': step <= color.b }"></div>
-  </div>
+<div *ngIf="color">
+  <div class="sam-color-preview" style="{{ color.getCSS() }}"></div>
+  <h2>Rot:</h2>
+  <app-slider (change)="setColorR($event)" [min]="0" [max]="255" [step]="15" [value]="color.r"></app-slider>
+  <h2>Grün:</h2>
+  <app-slider (change)="setColorG($event)" [min]="0" [max]="255" [step]="15" [value]="color.g"></app-slider>
+  <h2>Blau:</h2>
+  <app-slider (change)="setColorB($event)" [min]="0" [max]="255" [step]="15" [value]="color.b"></app-slider>
 </div>
-

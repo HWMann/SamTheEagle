@@ -1,23 +1,76 @@
-<h1>Zuweisungen</h1>
+<h1>Reagenzgläser</h1>
+<div class="sam-led-settings-list">
+  <div class="sam-led-settings-list-test-tube-row">
+    <app-led *ngIf="assigns.T1" [assign]="assigns.T1" (click)="selectAssign('T1')"></app-led>
+    <app-led *ngIf="assigns.T2" [assign]="assigns.T2" (click)="selectAssign('T2')"></app-led>
+    <app-led *ngIf="assigns.T3" [assign]="assigns.T3" (click)="selectAssign('T3')"></app-led>
+    <app-led *ngIf="assigns.T4" [assign]="assigns.T4" (click)="selectAssign('T4')"></app-led>
+    <app-led *ngIf="assigns.T5" [assign]="assigns.T5" (click)="selectAssign('T5')"></app-led>
+    <app-led *ngIf="assigns.T6" [assign]="assigns.T6" (click)="selectAssign('T6')"></app-led>
+    <app-led *ngIf="assigns.T7" [assign]="assigns.T7" (click)="selectAssign('T7')"></app-led>
+  </div>
+</div>
+<h1>Panels</h1>
 <div class="sam-led-settings-list">
   <div class="sam-led-settings-list-panel-row">
     <div>
-      <app-led *ngIf="assigns.LR" [assign]="assigns['LR']"></app-led>
+      <app-led *ngIf="assigns.LR" [assign]="assigns.LR" (click)="selectAssign('LR')"></app-led>
+      <app-led *ngIf="assigns.LG" [assign]="assigns.LG" (click)="selectAssign('LG')"></app-led>
+      <app-led *ngIf="assigns.LB" [assign]="assigns.LB" (click)="selectAssign('LB')"></app-led>
+      <app-led *ngIf="assigns.LY" [assign]="assigns.LY" (click)="selectAssign('LY')"></app-led>
     </div>
     <div>
-
+      <app-led *ngIf="assigns.LSR" [assign]="assigns.LSR" (click)="selectAssign('LSR')"></app-led>
+      <app-led *ngIf="assigns.LSG" [assign]="assigns.LSG" (click)="selectAssign('LSG')"></app-led>
+      <app-led *ngIf="assigns.LSB" [assign]="assigns.LSB" (click)="selectAssign('LSB')"></app-led>
+      <app-led *ngIf="assigns.LSY" [assign]="assigns.LSY" (click)="selectAssign('LSY')"></app-led>
     </div>
     <div>
-
+      <app-led *ngIf="assigns.RR" [assign]="assigns.RR" (click)="selectAssign('RR')"></app-led>
+      <app-led *ngIf="assigns.RG" [assign]="assigns.RG" (click)="selectAssign('RG')"></app-led>
+      <app-led *ngIf="assigns.RB" [assign]="assigns.RB" (click)="selectAssign('RB')"></app-led>
+      <app-led *ngIf="assigns.RY" [assign]="assigns.RY" (click)="selectAssign('RY')"></app-led>
     </div>
     <div>
-
+      <app-led *ngIf="assigns.RSR" [assign]="assigns.RSR" (click)="selectAssign('RSR')"></app-led>
+      <app-led *ngIf="assigns.RSG" [assign]="assigns.RSG" (click)="selectAssign('RSG')"></app-led>
+      <app-led *ngIf="assigns.RSB" [assign]="assigns.RSB" (click)="selectAssign('RSB')"></app-led>
+      <app-led *ngIf="assigns.RSY" [assign]="assigns.RSY" (click)="selectAssign('RSY')"></app-led>
     </div>
     <div>
-
+      <app-led *ngIf="assigns.BL" [assign]="assigns.BL" (click)="selectAssign('BL')"></app-led>
+      <app-led *ngIf="assigns.BR" [assign]="assigns.BR" (click)="selectAssign('BR')"></app-led>
+      <app-led *ngIf="assigns.W" [assign]="assigns.W" (click)="selectAssign('W')"></app-led>
     </div>
   </div>
 
 </div>
-<app-led-settings *ngIf="selectedAssign" [assign]="selectedAssign" (closeEvent)="closeSettings()"></app-led-settings>
+<h1>Ventile</h1>
+<div class="sam-led-settings-list">
+  <div class="sam-led-settings-list-rotary-row">
+    <div>
+      <app-led *ngIf="assigns.RRT" [assign]="assigns.RRT" (click)="selectAssign('RRT')"></app-led>
+      <app-led *ngIf="assigns.RRB" [assign]="assigns.RRB" (click)="selectAssign('RRB')"></app-led>
+    </div>
+    <div>
+      <app-led *ngIf="assigns.RGT" [assign]="assigns.RGT" (click)="selectAssign('RGT')"></app-led>
+      <app-led *ngIf="assigns.RGB" [assign]="assigns.RGB" (click)="selectAssign('RGB')"></app-led>
+    </div>
+    <div>
+      <app-led *ngIf="assigns.RBT" [assign]="assigns.RBT" (click)="selectAssign('RBT')"></app-led>
+      <app-led *ngIf="assigns.RBB" [assign]="assigns.RBB" (click)="selectAssign('RBB')"></app-led>
+    </div>
+  </div>
+</div>
+<h1>Anderes</h1>
+<div class="sam-led-settings-list">
+  <div class="sam-led-settings-list-misc-row">
+    <app-led *ngIf="assigns.SL" [assign]="assigns.SL" (click)="selectAssign('SL')"></app-led>
+    <app-led *ngIf="assigns.SM" [assign]="assigns.SM" (click)="selectAssign('SM')"></app-led>
+    <app-led *ngIf="assigns.SW" [assign]="assigns.SW" (click)="selectAssign('SW')"></app-led>
+    <app-led *ngIf="assigns.T" [assign]="assigns.T" (click)="selectAssign('T')"></app-led>
+  </div>
+</div>
+<app-led-settings *ngIf="selectedAssign" [assign]="selectedAssign" (closeEvent)="closeSettings()" (changeEvent)="this.updateAssign($event)"></app-led-settings>
+
 

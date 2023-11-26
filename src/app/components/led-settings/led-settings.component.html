@@ -2,15 +2,19 @@
   <h1>{{ assign.t }}</h1>
   <div>
     <h2>Farbe:</h2>
-    <app-palette [selectedColor]="palette[assign.c]"></app-palette>
-    <h2>Regenbogen</h2>
+    <app-palette [selectedColor]="palette[assign.c]" (colorSelect)="colorSelect($event)"></app-palette>
+    <h2>Modus</h2>
     <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-      <button (click)="setRainbow(1)">ein</button>
-      <button (click)="setRainbow(0)">aus</button>
+      <button (click)="setMode(0)" [ngClass]="{'active': assign.m === 0}">normal</button>
+      <button (click)="setMode(1)" [ngClass]="{'active': assign.m === 1}">Regenbogen</button>
     </div>
+    <h2>Helligkeit</h2>
+    <app-slider (change)="setBrightness($event)" [min]="0" [max]="1" [step]=".1"></app-slider>
+    <h2>Farbwertverschiebunf</h2>
+    <app-slider (change)="setHueOffset($event)" [min]="0" [max]="360" [step]="10"></app-slider>
   </div>
   <div>
-    <button (click)="close()">abbrechen</button>
+    <button (click)="close()">fertig</button>
   </div>
 </ng-container>
 

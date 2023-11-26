@@ -1,11 +1,36 @@
 .sam-led-settings-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 10px;
+  width: 100%;
 }
 
 .sam-led-settings-list-panel-row {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 10px;
+  width: 100%;
+}
 
+.sam-led-settings-list-test-tube-row {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.sam-led-settings-list-rotary-row {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.sam-led-settings-list-misc-row {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 10px;
+  width: 100%;
 }
 
 .sam-led-setting-display {

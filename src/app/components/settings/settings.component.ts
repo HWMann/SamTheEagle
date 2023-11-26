@@ -13,7 +13,9 @@ export class SettingsComponent {
   ) {
   }
   ngAfterViewInit() {
-    this.mqtt.publish("Bunsen/setting/mode",0);
+    //this.mqtt.publish("Bunsen/setting/mode");
+    this.mqtt.publish("cmnd/Bunsen6/sendPalette");
+
   }
-  
+
 }

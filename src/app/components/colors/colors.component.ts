@@ -3,41 +3,44 @@ import {ColorSelectObserver} from "../../observer/color-select.observer";
 import {Subscription} from "rxjs";
 import {RgbModel} from "../../Models/rgb.model";
 import {Mqtt} from "../../services/mqtt.service";
+import {GlobalService} from "../../services/global.service";
 
 @Component({
   selector: 'app-colors',
   templateUrl: './colors.component.html',
   styleUrls: ['./colors.component.scss']
 })
+
 export class ColorsComponent implements OnInit,OnDestroy {
 
-  private subs:Subscription[]=[]
   public selectedColor:RgbModel | undefined
+  public palette:RgbModel[] = []
+
 
   constructor(
     private colorSelectObserver:ColorSelectObserver,
-    private mqtt:Mqtt
+    private mqtt:Mqtt,
+    private globalService:GlobalService
   ) {
   }
 
   ngAfterViewInit() {
-    this.mqtt.publish("Bunsen/setting/mode",1);
+    this.mqtt.publish("cmnd/Bunsen6/mode",1);
+    this.globalService.palette().subscribe((data:RgbModel[]) => {
+      this.palette=data
+    })
   }
 
   ngOnInit(): void {
+    this.mqtt.publish("cmnd/Bunsen6/mode",1);
+  }
 
-    this.subs=[
-      this.colorSelectObserver.getMessage().subscribe((color:RgbModel) => {
-        this.selectedColor=color
-      })
-    ]
-
-    this.mqtt.publish("Bunsen/setting/mode",1);
+  public selectColor($event:any):void {
+    this.selectedColor=this.palette[$event];
   }
 
   ngOnDestroy(): void {
-    this.subs.forEach(s => s.unsubscribe())
-    this.mqtt.publish("Bunsen/setting/csmOff",null);
+    this.mqtt.publish("cmnd/Bunsen6/mode",0);
   }
 
 }

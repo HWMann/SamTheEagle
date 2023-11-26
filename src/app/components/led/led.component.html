@@ -1,11 +1,9 @@
-<div class="sam-led-setting-display">
-  <h1>{{ assign.t }}</h1>
-  <span></span>
-  <p>{{ assign.n }}</p>
-  <p>{{ assign.t }}</p>
-  <p>{{ assign.s }}</p>
-  <p>{{ assign.c }}</p>
-  <p>{{ assign.m }}</p>
-  <p>{{ assign.b }}</p>
-  <p>{{ assign.h }}</p>
+<div class="sam-led-setting-display" *ngIf="assign && palette">
+  <h1>{{ assign.s }}</h1>
+  <div *ngIf="palette[assign.c]" class="sam-led-color" [ngClass]="{'rainbow': assign.m == 1}"
+       style="{{ palette[assign.c].getCSS()}}"></div>
+  <span class="sam-led-features">
+    <fa-icon *ngIf="assign.m==1 || assign.m==3" [icon]="icons.faRainbow"></fa-icon>
+  </span>
+  <b *ngIf="assign.m>1">{{ assign.o }}</b>
 </div>

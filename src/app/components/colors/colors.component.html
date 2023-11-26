@@ -1,8 +1,6 @@
-<div class="sam-layout">
-  <app-sam link="/settings" title="Farben"></app-sam>
-  <div>
-    <app-palette></app-palette>
-    <app-rgb-mixer  *ngIf="selectedColor" [color]="selectedColor"></app-rgb-mixer>
+<app-sam link="/settings" title="Farben"></app-sam>
+<div>
+  <app-palette (colorSelect)="selectColor($event)"></app-palette>
+  <app-rgb-mixer *ngIf="selectedColor" [color]="selectedColor"></app-rgb-mixer>
 
-  </div>
 </div>

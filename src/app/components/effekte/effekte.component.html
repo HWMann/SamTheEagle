@@ -1,0 +1,8 @@
+<div class="sam-block">
+  <div class="sam-block-content">
+    <h1>Effekte!</h1>
+    <button (click)="sendEffekt(effekt)" *ngFor="let effekt of effekte">{{ effekt.name }}</button>
+
+    <button (click)="off()">ausschalten</button>
+  </div>
+</div>

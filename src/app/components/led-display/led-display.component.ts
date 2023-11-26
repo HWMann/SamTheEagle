@@ -11,7 +11,7 @@ import {Mqtt} from "../../services/mqtt.service";
   styleUrls: ['./led-display.component.scss'],
 })
 export class LedDisplayComponent implements OnInit {
-  public assigns:AssignModel[] =[]
+  public assigns:any = {}
   public palette:RgbModel[] = []
 
   public selectedAssign:AssignModel | null = null
@@ -23,23 +23,13 @@ export class LedDisplayComponent implements OnInit {
   ) {
   }
 
-  public selectAssign(n:number):void {
+  public selectAssign(n:string):void {
     this.selectedAssign=this.assigns[n]
   }
 
   ngOnInit(): void {
-    this.colorSelectObserver.getMessage().subscribe((color:RgbModel) => {
-      if(this.selectedAssign) {
-        this.selectedAssign.c=color.n
-        this.mqtt.publish("Bunsen/setting/assign",{
-          n: this.selectedAssign.n,
-          c: this.selectedAssign.c
-        })
-      }
-    })
     this.globalService.assigns().subscribe((data:AssignModel[]) => {
       this.assigns=data
-      console.log(this.assigns)
     })
   }
 
@@ -47,4 +37,7 @@ export class LedDisplayComponent implements OnInit {
     this.selectedAssign=null
   }
 
+  public updateAssign($event:any):void {
+    console.log("change:",this.selectedAssign);
+  }
 }

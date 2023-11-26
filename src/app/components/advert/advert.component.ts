@@ -14,13 +14,19 @@ export class AdvertComponent {
 
   toggleAdverts():void
   {
-    this.mqtt.publish("Beauregard/relais/1","2");
-    this.mqtt.publish("Beauregard/relais/2","2");
+    this.mqtt.publish("cmnd/George/red","2");
+    this.mqtt.publish("cmnd/George/green","2");
   }
 
   toggleKamin():void
   {
-    this.mqtt.publish("Beauregard/relais/3","2");
+    this.mqtt.publish("cmnd/George/blue","2");
+  }
+
+  toggleDeko():void {
+    this.mqtt.publish("cmnd/Bunsen6/shelf","2");
+    this.mqtt.publish("cmnd/Bunsen6/thermometer","2");
+    this.mqtt.publish("cmnd/Bunsen6/testTubes","2");
   }
 
 }
