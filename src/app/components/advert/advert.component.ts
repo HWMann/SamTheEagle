@@ -23,6 +23,10 @@ export class AdvertComponent {
     this.mqtt.publish("cmnd/George/blue","2");
   }
 
+  toggleTannebaum():void {
+    this.mqtt.publish("cmnd/George/yellow","2");
+  }
+
   toggleDeko():void {
     this.mqtt.publish("cmnd/Bunsen6/shelf","2");
     this.mqtt.publish("cmnd/Bunsen6/thermometer","2");
