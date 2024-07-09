@@ -5,7 +5,7 @@ import {SettingsComponent} from "./components/settings/settings.component";
 import {ColorsComponent} from "./components/colors/colors.component";
 import {AssignsComponent} from "./components/assigns/assigns.component";
 import {CalibrateComponent} from "./components/calibrate/calibrate.component";
-import {BikeComponent} from "./modules/bike/components/bike/bike.component";
+import {BikeComponent} from "./components/bike/bike.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },

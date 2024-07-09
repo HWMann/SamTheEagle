@@ -1,0 +1,48 @@
+.overlay {
+  position: fixed;
+  top:0;
+  left:0;
+  bottom:0;
+  right:0;
+  display:block;
+  margin:0;
+  padding:0;
+  background-color: black;
+  color:white;
+}
+
+.kmh-display {
+  position: absolute;
+  top:10px;
+  left:10px;
+  width:500px;
+  height:200px;
+  background-color: red;
+  text-align: right;
+  padding: 20px;
+  h1 {
+    margin:0;
+    font-size: 128px;
+    sup {
+      font-size: 64px;
+    }
+  }
+}
+
+.distance-display {
+  position: absolute;
+  top:220px;
+  left:10px;
+  width:500px;
+  height:200px;
+  background-color: red;
+  text-align: right;
+  padding: 20px;
+  h1 {
+    margin:0;
+    font-size: 128px;
+    sup {
+      font-size: 64px;
+    }
+  }
+}

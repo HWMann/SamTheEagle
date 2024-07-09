@@ -31,6 +31,7 @@ import { SliderComponent } from './components/slider/slider.component';
 import { SwitchPanelComponent } from './components/switch-panel/switch-panel.component';
 import { EffekteComponent } from './components/effekte/effekte.component';
 import {ConfigService} from "./services/config.service";
+import { BikeComponent } from './components/bike/bike.component';
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: 'kermit',
@@ -60,7 +61,8 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
     LedComponent,
     SliderComponent,
     SwitchPanelComponent,
-    EffekteComponent
+    EffekteComponent,
+    BikeComponent
   ],
   imports: [
     BrowserModule,
