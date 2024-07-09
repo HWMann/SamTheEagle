@@ -5,6 +5,7 @@ import {SettingsComponent} from "./components/settings/settings.component";
 import {ColorsComponent} from "./components/colors/colors.component";
 import {AssignsComponent} from "./components/assigns/assigns.component";
 import {CalibrateComponent} from "./components/calibrate/calibrate.component";
+import {BikeComponent} from "./modules/bike/components/bike/bike.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'colors', component: ColorsComponent },
   { path: 'assigns', component: AssignsComponent },
   { path: 'calibrate', component: CalibrateComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'bike', component: BikeComponent },
 ];
 
 @NgModule({
